@@ -3,7 +3,13 @@ import Sidebar from "react-sidebar";
 import FooterV from "./footer.component";
 import NavbarV from "./navbar.component";
 import SidebarV from "./sidebar.component";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 
 //Importing Pages
 import DashboardV from "./../../pages/dashboard.page";
@@ -38,42 +44,10 @@ export default function Main() {
         docked={dock}
         touch={true}
         onSetOpen={onSetSidebarOpen}>
-        <button
-          className='btn btn-success'
-          onClick={() => onSetSidebarOpen(true)}>
-          Call
-        </button>
         <NavbarV />
 
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/about'>About</Link>
-              </li>
-              <li>
-                <Link to='/users'>Users</Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <Switch>
-            <Route path='/about'>
-              <About />
-            </Route>
-            <Route path='/users'>
-              <Users />
-            </Route>
-            <Route path='/'>
-              <Home />
-            </Route>
-
-            {/* Actual Paths of the Vasooli app */}
             <Route path='/dashboard'>
               <DashboardV />
             </Route>
@@ -86,6 +60,10 @@ export default function Main() {
             <Route path='/profile'>
               <ProfileV />
             </Route>
+            <Redirect from='/' to='/dashboard' />
+            <Route path='/'>
+              <DashboardV />
+            </Route>
           </Switch>
         </div>
 
@@ -93,15 +71,4 @@ export default function Main() {
       </Sidebar>
     </Router>
   );
-}
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
