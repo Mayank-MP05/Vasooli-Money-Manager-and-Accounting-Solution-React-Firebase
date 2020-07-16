@@ -23,6 +23,7 @@ export default function Main() {
   const [Sidebaropen, setSidebaropen] = useState(false);
 
   const onSetSidebarOpen = (open) => {
+    console.log("St side bar");
     setSidebaropen(open);
   };
   const mediaQueryChanged = () => {
@@ -39,7 +40,7 @@ export default function Main() {
   return (
     <Router>
       <Sidebar
-        sidebar={<SidebarV />}
+        sidebar={<SidebarV sidebarControls={onSetSidebarOpen} />}
         open={Sidebaropen}
         docked={dock}
         touch={true}

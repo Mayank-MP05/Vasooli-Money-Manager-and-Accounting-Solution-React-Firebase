@@ -1,5 +1,13 @@
-import React from "react";
-
+import React, { Fragment } from "react";
+import Vasoolicard from "./../components/vasooli/vasoolicard";
 export default function VasooliV() {
-  return <div>This is the Vasooli PAge</div>;
+  return (
+    <Fragment>
+      <Vasoolicard />
+      <Vasoolicard />
+      <Vasoolicard />
+      <Vasoolicard />
+      <Vasoolicard />
+    </Fragment>
+  );
 }

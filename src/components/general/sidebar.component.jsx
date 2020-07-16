@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 export default function SidebarV() {
   return (
-    <div className='card' style={{ width: "250px", background: "white" }}>
+    <div
+      className='card'
+      style={{ width: "250px", background: "white", height: "100vh" }}>
       <img
         className='card-img-top'
         src='...'
