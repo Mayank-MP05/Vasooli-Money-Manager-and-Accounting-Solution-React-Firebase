@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "react-sidebar";
-import FooterPage from "./footer.component";
+import FooterV from "./footer.component";
 import NavbarV from "./navbar.component";
 
 const Article = () => (
@@ -74,6 +74,7 @@ export default function Sidebarnew() {
         Call
       </button>
       <NavbarV />
+      <FooterV />
     </Sidebar>
   );
 }
