@@ -46,7 +46,7 @@ export default function Main() {
         onSetOpen={onSetSidebarOpen}>
         <NavbarV />
 
-        <div>
+        <div className='container'>
           <Switch>
             <Route path='/dashboard'>
               <DashboardV />
