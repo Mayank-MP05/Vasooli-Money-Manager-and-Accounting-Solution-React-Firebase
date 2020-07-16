@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "react-sidebar";
-
-const mql = window.matchMedia(`(min-width: 800px)`);
+import FooterPage from "./footer.component";
+import NavbarV from "./navbar.component";
 
 const Article = () => (
-  <div style={{ maxWidth: "250px" }}>
+  <div style={{ maxWidth: "250px", background: "white" }}>
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur,
     dolore ullam quis sunt sapiente perferendis nemo suscipit facilis mollitia
     eos rem, illo excepturi. Harum aliquid iure fugiat, soluta molestiae error.
@@ -42,49 +42,38 @@ const Article = () => (
   </div>
 );
 
-class SidebarX extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sidebarDocked: mql.matches,
-      sidebarOpen: false,
+const mql = window.matchMedia(`(min-width: 800px)`);
+export default function Sidebarnew() {
+  const [dock, setdock] = useState(mql.matches);
+  const [Sidebaropen, setSidebaropen] = useState(false);
+
+  const onSetSidebarOpen = (open) => {
+    setSidebaropen(open);
+  };
+  const mediaQueryChanged = () => {
+    setdock(mql.matches);
+    setSidebaropen(false);
+  };
+  useEffect(() => {
+    mql.addListener(mediaQueryChanged);
+    return () => {
+      mql.removeListener(mediaQueryChanged);
     };
+  });
 
-    this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-  }
-
-  componentWillMount() {
-    mql.addListener(this.mediaQueryChanged);
-  }
-
-  componentWillUnmount() {
-    this.state.mql.removeListener(this.mediaQueryChanged);
-  }
-
-  onSetSidebarOpen(open) {
-    this.setState({ sidebarOpen: open });
-  }
-
-  mediaQueryChanged() {
-    this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
-  }
-
-  render() {
-    return (
-      <Sidebar
-        sidebar={<Article />}
-        open={this.state.sidebarOpen}
-        docked={this.state.sidebarDocked}
-        onSetOpen={this.onSetSidebarOpen}>
-        <button
-          className='btn btn-success'
-          onClick={() => this.onSetSidebarOpen(true)}>
-          Call
-        </button>
-      </Sidebar>
-    );
-  }
+  return (
+    <Sidebar
+      sidebar={<Article />}
+      open={Sidebaropen}
+      docked={dock}
+      touch={true}
+      onSetOpen={onSetSidebarOpen}>
+      <button
+        className='btn btn-success'
+        onClick={() => onSetSidebarOpen(true)}>
+        Call
+      </button>
+      <NavbarV />
+    </Sidebar>
+  );
 }
-
-export default SidebarX;

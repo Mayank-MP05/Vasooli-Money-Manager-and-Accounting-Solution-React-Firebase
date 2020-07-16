@@ -1,13 +1,15 @@
-import React from "react";
-import Drawer from "./components/drawer";
+import React, { Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SidebarX from "./components/sidebar";
-function App() {
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+import Sidebarnew from "./components/general/sidebarnew.component";
+
+const App = () => {
   return (
-    <div className='App'>
-      <SidebarX />
-    </div>
+    <Fragment>
+      <Sidebarnew />
+    </Fragment>
   );
-}
+};
 
 export default App;
