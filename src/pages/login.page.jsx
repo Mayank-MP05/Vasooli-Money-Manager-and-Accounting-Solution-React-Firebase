@@ -1,12 +1,21 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 export default function LoginV() {
+    const [user, setuser] = useState({
+        email:'',
+        password:''
+    })
+
+    const onSubmit = () => {
+
+    }
+
     return (
        <div class="card col-md-5 p-2 m-auto">
         <h4>Vasooli - Login</h4>
         <div class="form-group">
             <label>Email address</label>
-            <input type="email" class="form-control"placeholder="Enter email"/>
+            <input type="email" class="form-control" placeholder="Enter email"/>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
