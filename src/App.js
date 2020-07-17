@@ -75,7 +75,7 @@ const App = () => {
       </nav>
         {/* Navbar Top Ends Here */}
 
-        <div className='container'>
+        <div className='container p-3' style={{marginBottom:"80px"}}>
           <Switch>
             <Route path='/dashboard'>
               <DashboardV />
