@@ -24,6 +24,8 @@ import DashboardV from "./pages/dashboard.page";
 import ProfileV from "./pages/profile.page";
 import TransactionsV from "./pages/transactions.page";
 import VasooliV from "./pages/vasooli.page";
+import LoginV from "./pages/login.page"
+import SignupV from "./pages/signup.page"
 
 //Image import 
 import icon from './assets/img/icon.png'
@@ -93,6 +95,8 @@ const App = () => {
               <DashboardV />
             </Route>
             <Route path="/addtransaction" component={Addtransaction}/>
+            <Route path="/login" component={LoginV}/>
+            <Route path="/signup" component={SignupV}/>
             <Route path="/addvasooli" component={Addvasooli}/>
             <Route path='/transactions'>
               <TransactionsV />
