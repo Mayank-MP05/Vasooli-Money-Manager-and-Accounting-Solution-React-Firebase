@@ -1,5 +1,12 @@
-import React from "react";
-
+import React ,{Fragment} from "react";
+import Transactioncard from "./../transactions/transactioncard"
 export default function Threegroup() {
-  return <div>This is 3 group card</div>;
+  return (
+      <Fragment>
+            <h4>Income</h4>
+            <Transactioncard />
+            <Transactioncard />
+            <Transactioncard />
+    </Fragment>
+  );
 }
