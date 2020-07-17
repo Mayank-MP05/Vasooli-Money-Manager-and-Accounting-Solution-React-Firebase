@@ -16,6 +16,8 @@ import Sidebar from "react-sidebar";
 import FooterV from "./components/general/footer.component";
 import NavbarV from "./components/general/navbar.component";
 import SidebarV from "./components/general/sidebar.component";
+import Addtransaction from "./components/transactions/addtransaction";
+import Addvasooli from "./components/vasooli/addvasooli";
 
 //Importing Pages
 import DashboardV from "./pages/dashboard.page";
@@ -80,6 +82,8 @@ const App = () => {
             <Route path='/dashboard'>
               <DashboardV />
             </Route>
+            <Route path="/addtransaction" component={Addtransaction}/>
+            <Route path="/addvasooli" component={Addvasooli}/>
             <Route path='/transactions'>
               <TransactionsV />
             </Route>
