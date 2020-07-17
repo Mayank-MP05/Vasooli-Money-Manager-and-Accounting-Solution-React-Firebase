@@ -28,10 +28,14 @@ import VasooliV from "./pages/vasooli.page";
 //Image import 
 import icon from './assets/img/icon.png'
 
+
+//Firebase import 
+import fire from "./firebase/fire"
 const mql = window.matchMedia(`(min-width: 800px)`);
 const App = () => {
   const [dock, setdock] = useState(mql.matches);
   const [Sidebaropen, setSidebaropen] = useState(false);
+  const db = fire.firestore()
   //const [loc, setloc] = useState()
   const onSetSidebarOpen = (open) => {
     setSidebaropen(open);
@@ -41,11 +45,17 @@ const App = () => {
     setSidebaropen(false);
   };
   useEffect(() => {
+    console.log(process.env.REACT_APP_PROJECTID)
+    db.collection("users").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(`${doc.id} => ${doc.data()}`);
+        });
+    }).catch(err => console.log(err));
     mql.addListener(mediaQueryChanged);
     return () => {
       mql.removeListener(mediaQueryChanged);
     };
-  });
+  },[]);
 
   // const btnClick = () => {
   //   console.log("Btn CLicked")

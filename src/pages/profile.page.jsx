@@ -44,7 +44,7 @@ export default function ProfileV() {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-2 col-form-label">Name</label>
+        <label className="col-sm-2 col-form-label">Name : </label>
         <div className="col-sm-10">
           <input type="text" className="form-control" placeholder="Mayankk Pachpande"/>
         </div>
