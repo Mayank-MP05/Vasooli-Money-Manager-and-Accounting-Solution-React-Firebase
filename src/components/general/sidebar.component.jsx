@@ -14,6 +14,8 @@ export default function SidebarV({ control }) {
       />
       <div className='card-body'>
         <p className='card-title'>mayank5pande@gmail.com</p>
+        <button className="btn btn-warning m-1">Sign Up</button>
+        <button className="btn btn-success m-1">Log In</button>
         <hr/>
         <div className='card-text'>
           <ul className='list-group list-group-flush'>
