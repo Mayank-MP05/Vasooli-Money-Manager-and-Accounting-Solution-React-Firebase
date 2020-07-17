@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Chart() {
-  return "This is Sample Chart Component";
+  return <h1>Thsi is Chcart </h1>;
 }
