@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   Redirect,
+  useLocation
 } from "react-router-dom";
 //CSS imports 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -29,9 +30,8 @@ const mql = window.matchMedia(`(min-width: 800px)`);
 const App = () => {
   const [dock, setdock] = useState(mql.matches);
   const [Sidebaropen, setSidebaropen] = useState(false);
-
+  //const [loc, setloc] = useState()
   const onSetSidebarOpen = (open) => {
-    console.log("St side bar");
     setSidebaropen(open);
   };
   const mediaQueryChanged = () => {
@@ -53,7 +53,7 @@ const App = () => {
   return (
     <Router>
       <Sidebar
-        sidebar={<SidebarV sidebarControls={onSetSidebarOpen} />}
+        sidebar={<SidebarV control={onSetSidebarOpen}/>}
         open={Sidebaropen}
         docked={dock}
         touch={true}
