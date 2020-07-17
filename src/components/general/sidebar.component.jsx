@@ -13,7 +13,7 @@ export default function SidebarV() {
       />
       <div className='card-body'>
         <p className='card-title'>Card title</p>
-        <p className='card-text'>
+        <div className='card-text'>
           <ul className='list-group list-group-flush'>
             <Link to='/dashboard' className='list-group-item'>
               Dashboard
@@ -28,7 +28,7 @@ export default function SidebarV() {
               Profile
             </Link>
           </ul>
-        </p>
+        </div>
         <a href='#' className='btn btn-primary w-50 m-auto'>
           Log out
         </a>
