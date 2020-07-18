@@ -1,4 +1,4 @@
-export default categories = [
+const categories = [
   {
     iconclass: "fa fa-credit-card",
     title: "Bills",
@@ -67,3 +67,5 @@ export default categories = [
     description: "All the other pays - Blah Blah Blah",
   },
 ];
+
+export default categories;
