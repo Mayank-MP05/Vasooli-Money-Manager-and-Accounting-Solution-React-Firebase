@@ -90,7 +90,7 @@ export default function LoginV() {
         <button className='btn btn-primary w-75 m-auto m-2' onClick={onSubmit}>
           Log In
         </button>
-        <p>
+        <p className='m-auto p-2'>
           Don't have an account <Link to='/signup'>Create one here</Link>
         </p>
       </div>

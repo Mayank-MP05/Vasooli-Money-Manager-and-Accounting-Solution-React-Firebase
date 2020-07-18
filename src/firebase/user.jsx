@@ -31,12 +31,13 @@ export const FBlogout = () => {
     });
 };
 
-export const FBsignup = (email, password) => {
+export const FBsignup = ({ email, password }, successFn, errorFn) => {
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
       console.log("user created");
+      successFn(firebase.auth().currentUser);
     })
     .catch(function (error) {
       // Handle Errors here.
@@ -44,5 +45,6 @@ export const FBsignup = (email, password) => {
       var errorMessage = error.message;
       // ...
       console.log(error);
+      errorFn(error);
     });
 };
