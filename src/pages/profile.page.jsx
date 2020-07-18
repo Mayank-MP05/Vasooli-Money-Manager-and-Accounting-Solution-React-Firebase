@@ -61,7 +61,7 @@ export default function ProfileV() {
   useEffect(() => {
     fire.auth().onAuthStateChanged(function (user) {
       if (user) {
-        console.log(user);
+        //console.log(user);
         setuid(user.uid);
         getUserData(
           user.uid,
@@ -123,15 +123,15 @@ export default function ProfileV() {
                   value={user.profilePic}
                   name='profilePic'
                   onChange={handleChange}>
-                  <option value='1'>Man X</option>
-                  <option value='2'>Man X</option>
-                  <option value='3'>Man X</option>
-                  <option value='4'>Man X</option>
-                  <option value='5'>Man X</option>
-                  <option value='6'>Woman Y</option>
-                  <option value='7'>Woman Y</option>
-                  <option value='8'>Woman Y</option>
-                  <option value='9'>Woman Y</option>
+                  <option value='1'>Girl X</option>
+                  <option value='2'>Girl Y</option>
+                  <option value='3'>Girl Z</option>
+                  <option value='4'>Boy D</option>
+                  <option value='5'>Girl V</option>
+                  <option value='6'>Boy E</option>
+                  <option value='7'>Boy F</option>
+                  <option value='8'>Boy J</option>
+                  <option value='9'>Boy K</option>
                 </select>
               </div>
             </div>
