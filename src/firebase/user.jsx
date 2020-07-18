@@ -15,16 +15,8 @@ export const FBlogin = ({ email, password }, successFn, errorFn) => {
     });
 };
 
-export const FBlogout = () => {
-  firebase
-    .auth()
-    .signOut()
-    .then(function () {
-      console.log("User Logged Out");
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+export const FBlogout = (successFn, errorFn) => {
+  firebase.auth().signOut().then(successFn).catch(errorFn);
 };
 
 export const FBsignup = ({ email, password }, successFn, errorFn) => {

@@ -36,8 +36,8 @@ const mql = window.matchMedia(`(min-width: 800px)`);
 const App = () => {
   const [dock, setdock] = useState(mql.matches);
   const [Sidebaropen, setSidebaropen] = useState(false);
-  const db = fire.firestore();
-  //const [loc, setloc] = useState()
+  const [user, setuser] = useState({});
+
   const onSetSidebarOpen = (open) => {
     setSidebaropen(open);
   };
@@ -45,8 +45,28 @@ const App = () => {
     setdock(mql.matches);
     setSidebaropen(false);
   };
+
+  const show = () => {
+    console.log(user);
+  };
+
+  const cleanuser = () => {
+    setuser({})
+  }
+
   useEffect(() => {
+    //Sidebar logic
     mql.addListener(mediaQueryChanged);
+    fire.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        setuser(user);
+        console.log(user);
+      } else {
+        console.log("NO user AUth Change");
+      }
+    });
+    //Firebase User Checkin
+
     return () => {
       mql.removeListener(mediaQueryChanged);
     };
@@ -60,13 +80,15 @@ const App = () => {
   return (
     <Router>
       <Sidebar
-        sidebar={<SidebarV control={onSetSidebarOpen} />}
+        sidebar={<SidebarV control={onSetSidebarOpen} cleanuser={cleanuser}/>}
         open={Sidebaropen}
         docked={dock}
         touch={true}
         onSetOpen={onSetSidebarOpen}>
         <NavbarV onSetSidebarOpen={onSetSidebarOpen} />
-
+        <button className='btn btn-info' onClick={show}>
+          Show
+        </button>
         <div className='container p-3' style={{ marginBottom: "80px" }}>
           <Switch>
             <Route path='/dashboard'>

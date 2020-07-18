@@ -1,7 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {user2} from './../../data/userimages'
-export default function SidebarV({ control }) {
+import { user2 } from "./../../data/userimages";
+import { FBlogout } from "./../../firebase/user";
+import { Button } from "react-bootstrap";
+export default function SidebarV({ control, cleanuser }) {
+  const logout = () => {
+    FBlogout(
+      () => {
+        //Sucess Function
+        console.log("Log Out Successful");
+        cleanuser();
+      },
+      () => {
+        //Error Function
+        console.log("Error Occured");
+      }
+    );
+  };
   return (
     <div
       className='card'
@@ -10,33 +25,54 @@ export default function SidebarV({ control }) {
         className='card-img-top'
         src={user2}
         alt='Card image cap'
-        style={{ borderRadius: "50%" , width:"60%" ,margin:"auto" , marginTop:"5vh"}}
+        style={{
+          borderRadius: "50%",
+          width: "60%",
+          margin: "auto",
+          marginTop: "5vh",
+        }}
       />
       <div className='card-body'>
         <p className='card-title'>mayank5pande@gmail.com</p>
-        <Link to="/signup" className="btn btn-warning m-1">Sign Up</Link>
-        <Link to="/login" className="btn btn-success m-1">Log In</Link>
-        <hr/>
+        <Link to='/signup' className='btn btn-warning m-1'>
+          Sign Up
+        </Link>
+        <Link to='/login' className='btn btn-success m-1'>
+          Log In
+        </Link>
+        <hr />
         <div className='card-text'>
           <ul className='list-group list-group-flush'>
-            <Link to='/dashboard' className='list-group-item' onClick={() => control(false)}>
+            <Link
+              to='/dashboard'
+              className='list-group-item'
+              onClick={() => control(false)}>
               Dashboard
             </Link>
-            <Link to='/transactions' className='list-group-item'  onClick={() => control(false)}>
+            <Link
+              to='/transactions'
+              className='list-group-item'
+              onClick={() => control(false)}>
               Transactions
             </Link>
-            <Link to='/vasooli' className='list-group-item'  onClick={() => control(false)}>
+            <Link
+              to='/vasooli'
+              className='list-group-item'
+              onClick={() => control(false)}>
               Vasooli
             </Link>
-            <Link to='/profile' className='list-group-item'  onClick={() => control(false)}>
+            <Link
+              to='/profile'
+              className='list-group-item'
+              onClick={() => control(false)}>
               Profile
             </Link>
           </ul>
         </div>
-        <hr/>
-        <a href='#' className='btn btn-primary w-50 m-auto'>
+        <hr />
+        <Button onClick={logout} className='btn btn-primary w-50 m-auto'>
           Log out
-        </a>
+        </Button>
       </div>
     </div>
   );
