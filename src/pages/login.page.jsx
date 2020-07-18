@@ -29,16 +29,18 @@ export default function LoginV() {
   );
 
   const onSubmit = () => {
-    FBlogin(user.email, user.password)
-      .then(() => {
+    FBlogin(
+      { email: user.email, password: user.password },
+      (user) => {
         console.log("User Logged In");
         setsuccess(true);
-      })
-      .catch(function (err) {
+      },
+      (error) => {
         seterror(true);
         seterrorBody(err);
         console.log(err);
-      });
+      }
+    );
   };
 
   //To Stop displaying the popup after 3 sec

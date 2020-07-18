@@ -1,22 +1,17 @@
 import fire from "./fire";
 const firebase = fire;
-export const FBlogin = (email, password) => {
-  let res = undefined,
-    err = undefined;
-  return fire.auth().signInWithEmailAndPassword(email, password);
-  /*.then(() => {
-      console.log("User Logged In");
+export const FBlogin = ({ email, password }, successFn, errorFn) => {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      //console.log("User Logged In");
       res = firebase.auth().currentUser;
-      return res;
+      sucessFn(res);
     })
     .catch(function (error) {
-      console.log(error);
-      err = error;
-      return err;
-    })
-    .finally(() => {
-      return { res, err };
-    });*/
+      errorFn(error);
+    });
 };
 
 export const FBlogout = () => {
