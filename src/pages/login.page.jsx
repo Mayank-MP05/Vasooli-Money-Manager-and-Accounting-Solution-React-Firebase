@@ -37,8 +37,8 @@ export default function LoginV() {
       },
       (error) => {
         seterror(true);
-        seterrorBody(err);
-        console.log(err);
+        seterrorBody(error);
+        console.log(error);
       }
     );
   };

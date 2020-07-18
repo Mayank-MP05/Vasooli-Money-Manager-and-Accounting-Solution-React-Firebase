@@ -1,13 +1,14 @@
 import fire from "./fire";
 const firebase = fire;
 export const FBlogin = ({ email, password }, successFn, errorFn) => {
+  let res;
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then(() => {
       //console.log("User Logged In");
       res = firebase.auth().currentUser;
-      sucessFn(res);
+      successFn(res);
     })
     .catch(function (error) {
       errorFn(error);

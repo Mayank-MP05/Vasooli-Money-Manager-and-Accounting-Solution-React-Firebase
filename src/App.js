@@ -65,25 +65,7 @@ const App = () => {
         docked={dock}
         touch={true}
         onSetOpen={onSetSidebarOpen}>
-        {/* Navbar Top Start Here */}
-        <nav className='navbar navbar-light bg-primary text-white'>
-          <i
-            className='fa fa-bars'
-            style={{ fontSize: "30px" }}
-            onClick={() => setSidebaropen(true)}></i>
-          <a className='navbar-brand text-white d-flex' href='#'>
-            <h3 className='m-2'>Vasooli</h3>
-            <img
-              src={icon}
-              width='50'
-              height='50'
-              className='d-inline-block align-top'
-              alt='Vasooli App Icon'
-              style={{ borderRadius: "50%" }}
-            />
-          </a>
-        </nav>
-        {/* Navbar Top Ends Here */}
+        <NavbarV onSetSidebarOpen={onSetSidebarOpen} />
 
         <div className='container p-3' style={{ marginBottom: "80px" }}>
           <Switch>
