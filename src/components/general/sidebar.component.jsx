@@ -28,7 +28,7 @@ export default function SidebarV({ control, cleanuser, user, loggedin }) {
           <Fragment>
             <img
               className='card-img-top'
-              src={imgArr[parseInt(user.photoURL)]}
+              src={imgArr[parseInt(user.photoURL) - 1]}
               alt='Card image cap'
               id={user.uid}
               style={{

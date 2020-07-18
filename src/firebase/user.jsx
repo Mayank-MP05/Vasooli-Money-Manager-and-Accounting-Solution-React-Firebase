@@ -1,6 +1,7 @@
 import fire from "./fire";
 const firebase = fire;
 
+//Function to Login the Exsiting user
 export const FBlogin = ({ email, password }, successFn, errorFn) => {
   let res;
   firebase
@@ -16,10 +17,12 @@ export const FBlogin = ({ email, password }, successFn, errorFn) => {
     });
 };
 
+//Function to Logout User
 export const FBlogout = (successFn, errorFn) => {
   firebase.auth().signOut().then(successFn).catch(errorFn);
 };
 
+//Function to Create New User
 export const FBsignup = ({ email, password }, successFn, errorFn) => {
   //Random Number Gen Logic between 1 to 9 for DP
   let randomProfile = Math.floor(Math.random() * 9) + 1;
@@ -59,4 +62,39 @@ export const FBsignup = ({ email, password }, successFn, errorFn) => {
       console.log(error);
       errorFn(error);
     });
+};
+
+//Function to get all user data
+export const getUserData = (uid, successFn, errorFn) => {
+  const db = fire.firestore();
+  db.collection("users")
+    .doc(uid)
+    .get()
+    .then((res) => {
+      successFn(res.data());
+    })
+    .catch((err) => errorFn(err));
+};
+
+//Updating Document in FB Firestore
+export const updateUserData = (
+  uid,
+  { email, fullName, profilePic, address },
+  successFn,
+  errorFn
+) => {
+  const db = fire.firestore();
+  db.collection("users")
+    .doc(uid)
+    .set(
+      {
+        email,
+        fullName,
+        profilePic,
+        address,
+      },
+      { merge: true }
+    )
+    .then(successFn)
+    .catch((err) => errorFn(err));
 };
