@@ -37,6 +37,7 @@ const App = () => {
   const [dock, setdock] = useState(mql.matches);
   const [Sidebaropen, setSidebaropen] = useState(false);
   const [user, setuser] = useState({});
+  const [loggedin, setloggedin] = useState(false);
 
   const onSetSidebarOpen = (open) => {
     setSidebaropen(open);
@@ -51,8 +52,9 @@ const App = () => {
   };
 
   const cleanuser = () => {
-    setuser({})
-  }
+    setloggedin(false);
+    setuser({});
+  };
 
   useEffect(() => {
     //Sidebar logic
@@ -60,6 +62,7 @@ const App = () => {
     fire.auth().onAuthStateChanged(function (user) {
       if (user) {
         setuser(user);
+        setloggedin(true);
         console.log(user);
       } else {
         console.log("NO user AUth Change");
@@ -80,15 +83,22 @@ const App = () => {
   return (
     <Router>
       <Sidebar
-        sidebar={<SidebarV control={onSetSidebarOpen} cleanuser={cleanuser}/>}
+        sidebar={
+          <SidebarV
+            control={onSetSidebarOpen}
+            user={user}
+            cleanuser={cleanuser}
+            loggedin={loggedin}
+          />
+        }
         open={Sidebaropen}
         docked={dock}
         touch={true}
         onSetOpen={onSetSidebarOpen}>
         <NavbarV onSetSidebarOpen={onSetSidebarOpen} />
-        <button className='btn btn-info' onClick={show}>
+        {/*<button className='btn btn-info' onClick={show}>
           Show
-        </button>
+  </button>*/}
         <div className='container p-3' style={{ marginBottom: "80px" }}>
           <Switch>
             <Route path='/dashboard'>

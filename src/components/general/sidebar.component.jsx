@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { user2 } from "./../../data/userimages";
+import { imgArr } from "./../../data/userimages";
 import { FBlogout } from "./../../firebase/user";
 import { Button } from "react-bootstrap";
-export default function SidebarV({ control, cleanuser }) {
+import "./sidebar.style.css";
+
+export default function SidebarV({ control, cleanuser, user, loggedin }) {
   const logout = () => {
     FBlogout(
       () => {
@@ -21,25 +23,36 @@ export default function SidebarV({ control, cleanuser }) {
     <div
       className='card'
       style={{ width: "250px", background: "white", height: "100vh" }}>
-      <img
-        className='card-img-top'
-        src={user2}
-        alt='Card image cap'
-        style={{
-          borderRadius: "50%",
-          width: "60%",
-          margin: "auto",
-          marginTop: "5vh",
-        }}
-      />
       <div className='card-body'>
-        <p className='card-title'>mayank5pande@gmail.com</p>
-        <Link to='/signup' className='btn btn-warning m-1'>
-          Sign Up
-        </Link>
-        <Link to='/login' className='btn btn-success m-1'>
-          Log In
-        </Link>
+        {loggedin ? (
+          <Fragment>
+            <img
+              className='card-img-top'
+              src={imgArr[parseInt(user.photoURL)]}
+              alt='Card image cap'
+              id={user.uid}
+              style={{
+                borderRadius: "50%",
+                width: "60%",
+                margin: "3vh 19%",
+              }}
+            />
+            <p
+              className='card-title d-flex justify-content-center'
+              style={{ fontWeight: "bold" }}>
+              {user.email}
+            </p>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <Link to='/signup' className='btn btn-warning m-1'>
+              Sign Up
+            </Link>
+            <Link to='/login' className='btn btn-success m-1'>
+              Log In
+            </Link>
+          </Fragment>
+        )}
         <hr />
         <div className='card-text'>
           <ul className='list-group list-group-flush'>
@@ -70,9 +83,15 @@ export default function SidebarV({ control, cleanuser }) {
           </ul>
         </div>
         <hr />
-        <Button onClick={logout} className='btn btn-primary w-50 m-auto'>
-          Log out
-        </Button>
+        {loggedin ? (
+          <Button
+            onClick={logout}
+            className='btn btn-outline-danger w-75 m-auto bg-white d-flex justify-content-center'>
+            Log out
+          </Button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
