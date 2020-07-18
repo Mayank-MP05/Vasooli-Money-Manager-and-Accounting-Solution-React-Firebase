@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { FBlogin } from "./../firebase/user";
 import { Link } from "react-router-dom";
 export default function LoginV() {
@@ -6,57 +6,94 @@ export default function LoginV() {
     email: "",
     password: "",
   });
-
+  const [success, setsuccess] = useState(false);
+  const [error, seterror] = useState(false);
+  const [errorBody, seterrorBody] = useState({});
   const handleChange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
     //console.log(user);
   };
 
+  const sucessAlert = () => (
+    <div className='alert alert-success'>
+      Authentication Complete ! Logged In Sucessful
+    </div>
+  );
+
+  const errorAlert = () => (
+    <div className='alert alert-danger'>
+      {errorBody.message
+        ? errorBody.message
+        : "Something Went Wrong Please Try Again !"}
+    </div>
+  );
+
   const onSubmit = () => {
-    //Validations Here
-    let res, err;
     FBlogin(user.email, user.password)
       .then(() => {
         console.log("User Logged In");
+        setsuccess(true);
       })
-      .catch(function (error) {
-        console.log(error);
-        err = error;
+      .catch(function (err) {
+        seterror(true);
+        seterrorBody(err);
+        console.log(err);
       });
   };
 
+  //To Stop displaying the popup after 3 sec
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        seterror(false);
+      }, 3000);
+    }
+  }, [error]);
+  //To Stop displaying the popup after 3 sec
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        setsuccess(false);
+      }, 3000);
+    }
+  }, [success]);
+
   return (
-    <div className='card col-md-6 p-2 m-auto'>
-      <h4>Vasooli - Login</h4>
-      <div className='form-group'>
-        <label>Email address</label>
-        <input
-          type='email'
-          className='form-control'
-          placeholder='Enter email'
-          name='email'
-          value={user.email}
-          onChange={handleChange}
-        />
+    <Fragment>
+      {success && sucessAlert()}
+      {error && errorAlert()}
+      <div className='card col-md-6 p-2 m-auto'>
+        <h4>Vasooli - Login</h4>
+        <div className='form-group'>
+          <label>Email address</label>
+          <input
+            type='email'
+            className='form-control'
+            placeholder='Enter email'
+            name='email'
+            value={user.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className='form-group'>
+          <label>Password</label>
+          <input
+            type='password'
+            className='form-control'
+            id='exampleInputPassword1'
+            placeholder='Password'
+            name='password'
+            value={user.password}
+            onChange={handleChange}
+          />
+        </div>
+        <button className='btn btn-primary w-75 m-auto m-2' onClick={onSubmit}>
+          Log In
+        </button>
+        <p>
+          Don't have an account <Link to='/signup'>Create one here</Link>
+        </p>
       </div>
-      <div className='form-group'>
-        <label>Password</label>
-        <input
-          type='password'
-          className='form-control'
-          id='exampleInputPassword1'
-          placeholder='Password'
-          name='password'
-          value={user.password}
-          onChange={handleChange}
-        />
-      </div>
-      <button className='btn btn-primary w-75 m-auto m-2' onClick={onSubmit}>
-        Log In
-      </button>
-      <p>
-        Don't have an account <Link to='/signup'>Create one here</Link>
-      </p>
-    </div>
+    </Fragment>
   );
 }
