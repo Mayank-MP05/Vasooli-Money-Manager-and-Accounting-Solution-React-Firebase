@@ -109,7 +109,7 @@ const App = () => {
             <Route path='/signup' component={SignupV} />
             <Route path='/addvasooli' component={Addvasooli} />
             <Route path='/transactions'>
-              <TransactionsV />
+              <TransactionsV user={user} loggedin={loggedin} />
             </Route>
             <Route path='/vasooli'>
               <VasooliV />

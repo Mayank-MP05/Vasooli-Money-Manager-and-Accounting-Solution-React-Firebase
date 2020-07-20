@@ -5,7 +5,7 @@ import { addTrans } from "../../firebase/transaction";
 
 export default function Addtransaction() {
   const [trans, settrans] = useState({
-    type: "",
+    type: "EXP",
     amount: 0,
     category: 0,
     date: new Date(),

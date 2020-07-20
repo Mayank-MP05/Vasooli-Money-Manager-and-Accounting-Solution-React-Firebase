@@ -98,3 +98,14 @@ export const updateUserData = (
     .then(successFn)
     .catch((err) => errorFn(err));
 };
+
+//Get Current User
+export const getCurrentUser = () => {
+  fire.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      return user;
+    } else {
+      console.log("NO user AUth Change");
+    }
+  });
+};
