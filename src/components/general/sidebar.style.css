@@ -1,5 +1,5 @@
 .list-group-item:hover {
-  background: #0274d859;
-  color: white;
+  background: #0274d81f;
+  font-weight: bold;
   font-size: bold;
 }

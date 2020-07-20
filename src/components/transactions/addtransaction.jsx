@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import categories from "./../../data/categories";
 import fire from "../../firebase/fire";
 import { addTrans } from "../../firebase/transaction";
+
 export default function Addtransaction() {
   const [trans, settrans] = useState({
     type: "",

@@ -86,7 +86,7 @@ export default function SidebarV({ control, cleanuser, user, loggedin }) {
         {loggedin ? (
           <Button
             onClick={logout}
-            className='btn btn-outline-danger w-75 m-auto bg-white d-flex justify-content-center'>
+            className='btn btn-outline-danger text-danger w-75 m-auto bg-white d-flex justify-content-center'>
             Log out
           </Button>
         ) : (

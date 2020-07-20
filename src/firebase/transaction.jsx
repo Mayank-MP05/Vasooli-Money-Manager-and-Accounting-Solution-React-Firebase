@@ -21,3 +21,8 @@ export const addTrans = (
     .then((res) => successFn(res))
     .catch((err) => errorFn(err));
 };
+
+//Get the Cards by Filter - "INC","EXP"
+export const getByFilter = (filter) => {
+  
+};
