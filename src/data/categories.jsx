@@ -21,7 +21,19 @@ const categories = [
       "Includes electricity bill, water bill, Gas bill and all other monthly bills ",
     style: Blue,
   },
-
+  {
+    iconclass: "fa fa-money",
+    title: "Salary",
+    description: "Includes Official Salary Given by the Day Job you used to do",
+    style: Yellow,
+  },
+  {
+    iconclass: "fa fa-university",
+    title: "Bonus",
+    description:
+      "Any type of bonus at your day job Increment or any hike in your Paycheque",
+    style: Blue,
+  },
   {
     iconclass: "fa fa-building",
     title: "EMI",
