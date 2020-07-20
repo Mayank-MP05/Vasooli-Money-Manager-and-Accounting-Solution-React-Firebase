@@ -10,6 +10,7 @@ import {
 //CSS imports
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "font-awesome/css/font-awesome.min.css";
 
 //Components imports
 import Sidebar from "react-sidebar";
@@ -27,8 +28,6 @@ import VasooliV from "./pages/vasooli.page";
 import LoginV from "./pages/login.page";
 import SignupV from "./pages/signup.page";
 
-//Image import
-import icon from "./assets/img/icon.png";
 
 //Firebase import
 import fire from "./firebase/fire";

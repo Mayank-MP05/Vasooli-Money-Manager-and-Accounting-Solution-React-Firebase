@@ -5,3 +5,37 @@
 .back-danger {
   background: #f7b0ad;
 }
+
+/*Desktop Mode*/
+@media (min-width: 500px) {
+  .img-col {
+    width: 16.6%;
+  }
+  .content-col {
+    width: 83.3%;
+  }
+  .imgIcon {
+    font-size: "60px";
+    color: white;
+  }
+  .amount {
+    font-size: 18px;
+  }
+}
+
+/*Mobile Mode*/
+@media (max-width: 500px) {
+  .img-col {
+    width: 24%;
+  }
+  .content-col {
+    width: 66%;
+  }
+  .imgIcon {
+    font-size: 40px;
+    color: white;
+  }
+  .amount {
+    font-size: 12px;
+  }
+}

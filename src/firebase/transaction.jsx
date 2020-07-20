@@ -30,6 +30,7 @@ export const getTransactionByFilter = (uid, filter, successFn, errorFn) => {
     //Defailt "ALL" Case
     db.collection("transactions")
       .where("user", "==", uid)
+
       .where("type", "==", "INC")
       .get()
       .then((res) => successFn(res))
@@ -38,6 +39,7 @@ export const getTransactionByFilter = (uid, filter, successFn, errorFn) => {
     //Defailt "ALL" Case
     db.collection("transactions")
       .where("user", "==", uid)
+
       .where("type", "==", "EXP")
       .get()
       .then((res) => successFn(res))
@@ -46,6 +48,7 @@ export const getTransactionByFilter = (uid, filter, successFn, errorFn) => {
     //Defailt "ALL" Case
     db.collection("transactions")
       .where("user", "==", uid)
+
       .get()
       .then((res) => successFn(res))
       .catch((err) => errorFn(err));

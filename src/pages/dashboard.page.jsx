@@ -11,12 +11,8 @@ export default function DashboardV() {
       </div>
       <hr className='display-3' />
       <div className='row'>
-        <div className='col-md-6'>
-          <Threegroup />
-        </div>
-        <div className='col-md-6'>
-          <Threegroup />
-        </div>
+        <div className='col-md-6'></div>
+        <div className='col-md-6'></div>
       </div>
     </Fragment>
   );
