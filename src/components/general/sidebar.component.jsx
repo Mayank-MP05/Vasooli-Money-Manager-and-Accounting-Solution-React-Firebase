@@ -80,6 +80,12 @@ export default function SidebarV({ control, cleanuser, user, loggedin }) {
               onClick={() => control(false)}>
               Profile
             </Link>
+            <Link
+              to='/notif'
+              className='list-group-item'
+              onClick={() => control(false)}>
+              Notifications
+            </Link>
           </ul>
         </div>
         <hr />

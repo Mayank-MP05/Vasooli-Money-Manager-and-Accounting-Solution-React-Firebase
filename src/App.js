@@ -19,6 +19,7 @@ import NavbarV from "./components/general/navbar.component";
 import SidebarV from "./components/general/sidebar.component";
 import Addtransaction from "./components/transactions/addtransaction";
 import Addvasooli from "./components/vasooli/addvasooli";
+import Notif from "./components/general/notif.component";
 
 //Importing Pages
 import DashboardV from "./pages/dashboard.page";
@@ -106,6 +107,7 @@ const App = () => {
             <Route path='/login' component={LoginV} />
             <Route path='/signup' component={SignupV} />
             <Route path='/addvasooli' component={Addvasooli} />
+            <Route path='/notif' component={Notif} />
             <Route path='/transactions'>
               <TransactionsV user={user} loggedin={loggedin} />
             </Route>
