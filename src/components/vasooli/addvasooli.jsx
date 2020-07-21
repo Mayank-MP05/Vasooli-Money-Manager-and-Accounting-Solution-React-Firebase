@@ -12,7 +12,9 @@ export default function Addvasooli() {
     category: 0,
     date: new Date(),
     desc: "",
+    status: "WAITING",
   });
+  const [user, setuser] = useState({});
   const [userlist, setuserlist] = useState([]);
   const [success, setsuccess] = useState(false);
   const [error, seterror] = useState(false);
@@ -32,6 +34,7 @@ export default function Addvasooli() {
           category: 1,
           date: new Date(),
           desc: "",
+          status: "WAITING",
         });
       },
       (err) => {
@@ -70,6 +73,12 @@ export default function Addvasooli() {
         console.log(err);
       }
     );
+  };
+
+  const getuser = () => {
+    let user = fire.auth().currentUser;
+    setuser(user);
+    return <h1>Jusr Demo</h1>;
   };
 
   //To Stop displaying the popup after 3 sec
@@ -121,11 +130,13 @@ export default function Addvasooli() {
               name='to'
               value={vasooli.to}
               onChange={handleChange}>
-              {userlist.map((usr, index) => (
-                <option key={index} value={usr}>
-                  {usr}
-                </option>
-              ))}
+              {userlist
+                .filter((itr) => itr !== user.email)
+                .map((usr, index) => (
+                  <option key={index} value={usr}>
+                    {usr}
+                  </option>
+                ))}
             </select>
           </div>
         </div>

@@ -28,7 +28,6 @@ import VasooliV from "./pages/vasooli.page";
 import LoginV from "./pages/login.page";
 import SignupV from "./pages/signup.page";
 
-
 //Firebase import
 import fire from "./firebase/fire";
 const mql = window.matchMedia(`(min-width: 800px)`);
@@ -62,7 +61,7 @@ const App = () => {
       if (user) {
         setuser(user);
         setloggedin(true);
-        console.log(user);
+        //        console.log(user);
       } else {
         console.log("NO user AUth Change");
       }
