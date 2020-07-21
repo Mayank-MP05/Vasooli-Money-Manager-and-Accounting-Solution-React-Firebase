@@ -32,7 +32,7 @@ export default function Notifpage() {
   }, [loc.pathname]);
 
   return (
-    <div className='container p-1 m-2'>
+    <div className='container p-1 m-2' style={{ marginBottom: "40px" }}>
       {NotifArr.map((notif, index) => (
         <Notif key={index} data={notif} />
       ))}

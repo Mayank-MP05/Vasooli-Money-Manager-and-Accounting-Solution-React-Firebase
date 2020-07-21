@@ -2,12 +2,14 @@ import fire from "./fire";
 
 export const getNotif = (email, successFn, errorFn) => {
   const db = fire.firestore();
+  console.log(email);
   db.collection("notif")
+    .where("private", "==", true)
     .where("user", "==", email)
     .get()
     .then((res1) => {
       db.collection("notif")
-        .where("private", "==", "false")
+        .where("private", "==", false)
         .get()
         .then((res2) => {
           let Arr = [];
