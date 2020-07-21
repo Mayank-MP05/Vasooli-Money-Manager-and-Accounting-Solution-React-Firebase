@@ -1,6 +1,23 @@
-import React, { useState, useRef } from "react";
-
-
-export default function Notif() {
-  return <div className='container p-1 m-2'>THis is Notification Are</div>;
+import React, { useState, useEffect } from "react";
+export default function Notif({ data: { content, type } }) {
+  const [classNameX, setclassNameX] = useState("");
+  const [icon, seticon] = useState("fa fa-info-circle");
+  useEffect(() => {
+    if (type === "INFO") {
+      setclassNameX("alert-info");
+    } else {
+      setclassNameX("alert-warning");
+      seticon("fa fa-credit-card");
+    }
+  }, []);
+  return (
+    <div className={"alert p-1 m-2 " + classNameX}>
+      <i className={`${icon} p-0 m-1`}></i>
+      <b>
+        {type}
+        {" : "}
+      </b>
+      {content}
+    </div>
+  );
 }

@@ -19,7 +19,6 @@ import NavbarV from "./components/general/navbar.component";
 import SidebarV from "./components/general/sidebar.component";
 import Addtransaction from "./components/transactions/addtransaction";
 import Addvasooli from "./components/vasooli/addvasooli";
-import Notif from "./components/general/notif.component";
 
 //Importing Pages
 import DashboardV from "./pages/dashboard.page";
@@ -28,6 +27,7 @@ import TransactionsV from "./pages/transactions.page";
 import VasooliV from "./pages/vasooli.page";
 import LoginV from "./pages/login.page";
 import SignupV from "./pages/signup.page";
+import Notifpage from "./pages/notif.page";
 
 //Firebase import
 import fire from "./firebase/fire";
@@ -107,7 +107,7 @@ const App = () => {
             <Route path='/login' component={LoginV} />
             <Route path='/signup' component={SignupV} />
             <Route path='/addvasooli' component={Addvasooli} />
-            <Route path='/notif' component={Notif} />
+            <Route path='/notif' component={Notifpage} />
             <Route path='/transactions'>
               <TransactionsV user={user} loggedin={loggedin} />
             </Route>
