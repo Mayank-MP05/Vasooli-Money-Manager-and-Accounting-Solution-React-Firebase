@@ -1,5 +1,10 @@
 import React, { useEffect, useState, Fragment } from "react";
 import categories from "./../../data/categories";
+
+import fire from "./../../firebase/fire";
+import { getUserList } from "./../../firebase/user";
+import { addVasooli } from "./../../firebase/vasooli";
+
 export default function Addvasooli() {
   const [vasooli, setvasooli] = useState({
     to: "",
@@ -8,22 +13,23 @@ export default function Addvasooli() {
     date: new Date(),
     desc: "",
   });
+  const [userlist, setuserlist] = useState([]);
   const [success, setsuccess] = useState(false);
   const [error, seterror] = useState(false);
   const [errorBody, seterrorBody] = useState({});
 
   const onsubmit = () => {
     let user = fire.auth().currentUser;
-    addTrans(
-      user.uid,
-      trans,
+    addVasooli(
+      user.email,
+      vasooli,
       (res) => {
         console.log(res);
         setsuccess(true);
-        settrans({
-          type: "",
+        setvasooli({
+          to: "",
           amount: 0,
-          category: 0,
+          category: 1,
           date: new Date(),
           desc: "",
         });
@@ -37,7 +43,7 @@ export default function Addvasooli() {
   };
 
   const handleChange = (e) => {
-    settrans({ ...trans, [e.target.name]: e.target.value });
+    setvasooli({ ...vasooli, [e.target.name]: e.target.value });
     //console.log(user);
   };
   const sucessAlert = () => (
@@ -52,10 +58,19 @@ export default function Addvasooli() {
     </div>
   );
 
-  useEffect(() => {
-      //Getting user list
-      
-  }, []);
+  const listing = () => {
+    //Getting user list
+    getUserList(
+      (res) => {
+        setuserlist(res.data);
+      },
+      (err) => {
+        seterror(true);
+        seterrorBody(err);
+        console.log(err);
+      }
+    );
+  };
 
   //To Stop displaying the popup after 3 sec
   useEffect(() => {
@@ -73,6 +88,10 @@ export default function Addvasooli() {
       }, 3000);
     }
   }, [success]);
+
+  useEffect(() => {
+    listing();
+  }, []);
   return (
     <Fragment>
       {success && sucessAlert()}
@@ -102,11 +121,11 @@ export default function Addvasooli() {
               name='to'
               value={vasooli.to}
               onChange={handleChange}>
-              <option>email@email.com 1</option>
-              <option>email@email.com 1</option>
-              <option>email@email.com 1</option>
-              <option>email@email.com 1</option>
-              <option>email@email.com 1</option>
+              {userlist.map((usr, index) => (
+                <option key={index} value={usr}>
+                  {usr}
+                </option>
+              ))}
             </select>
           </div>
         </div>

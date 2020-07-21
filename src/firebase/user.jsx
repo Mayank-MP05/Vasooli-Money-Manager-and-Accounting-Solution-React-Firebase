@@ -1,4 +1,5 @@
 import fire from "./fire";
+import axios from "axios";
 const firebase = fire;
 
 //Function to Login the Exsiting user
@@ -108,4 +109,25 @@ export const getCurrentUser = () => {
       console.log("NO user AUth Change");
     }
   });
+};
+
+//Get all the Users List
+export const getUserList = (successFn, errorFn) => {
+  //TODO: Setting up cloud function
+  //db.collection("users").get().then().catch();
+  /*fire
+    .functions()
+    .httpsCallable("listUsers")
+    .then((res) => {
+      console.log(res);
+      successFn(res);
+    })
+    .catch((err) => errorFn(err));*/
+  axios
+    .get("https://us-central1-prebasooli.cloudfunctions.net/app")
+    .then((res) => {
+      console.log(res);
+      successFn(res);
+    })
+    .catch((err) => errorFn(err));
 };
