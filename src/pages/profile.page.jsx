@@ -112,7 +112,7 @@ export default function ProfileV() {
             {/* Profile pic Section */}
             <div className='col-md-4 d-flex flex-column'>
               <img
-                src={imgArr[parseInt(user.profilePic) - 1]}
+                src={imgArr[parseInt(user.profilePic)]}
                 alt='Profile Picture of the User'
                 className='w-50 m-auto'
               />

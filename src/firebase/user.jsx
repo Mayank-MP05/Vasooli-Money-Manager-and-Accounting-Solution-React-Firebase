@@ -26,7 +26,7 @@ export const FBlogout = (successFn, errorFn) => {
 //Function to Create New User
 export const FBsignup = ({ email, password }, successFn, errorFn) => {
   //Random Number Gen Logic between 1 to 9 for DP
-  let randomProfile = Math.floor(Math.random() * 9) + 1;
+  let randomProfile = Math.floor(Math.random() * 9);
   const db = fire.firestore();
   //Firebase Authentication Signup
   firebase
@@ -51,6 +51,7 @@ export const FBsignup = ({ email, password }, successFn, errorFn) => {
         .set({
           fullName: "",
           address: "",
+          balance: 0,
           email: user.email,
           profilePic: randomProfile.toString(),
         })
@@ -114,15 +115,6 @@ export const getCurrentUser = () => {
 //Get all the Users List
 export const getUserList = (successFn, errorFn) => {
   //TODO: Setting up cloud function
-  //db.collection("users").get().then().catch();
-  /*fire
-    .functions()
-    .httpsCallable("listUsers")
-    .then((res) => {
-      console.log(res);
-      successFn(res);
-    })
-    .catch((err) => errorFn(err));*/
   axios
     .get("https://us-central1-prebasooli.cloudfunctions.net/app")
     .then((res) => {
