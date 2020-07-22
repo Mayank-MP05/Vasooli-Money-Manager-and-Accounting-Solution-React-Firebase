@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Transactioncard from "./../components/transactions/transactioncard";
 import { getTransactionByFilter } from "./../firebase/transaction";
 import Spinner from "react-bootstrap/Spinner";
@@ -17,6 +17,7 @@ export default function TransactionsV() {
   const [TransactionsArr, setTransactionsArr] = useState([]);
   const [loading, setloading] = useState(true);
   const [user, setuser] = useState({});
+  let loc = useLocation();
 
   const getDataFromFB = () => {
     console.log(filter);
@@ -60,7 +61,7 @@ export default function TransactionsV() {
         console.log("NO user AUth Change");
       }
     });
-  }, []);
+  }, [loc.pathname]);
 
   return (
     <Fragment>

@@ -86,6 +86,11 @@ export default function Vasoolicard({
         </div>
         <div className='col-10 justify-content-start text-left'>
           <h6 className='card-title m-0'>
+            <div className='badge badge-success p-1 m-0'>
+              User{": "}
+              {to}
+            </div>
+            <br />
             Category{" "}
             <i
               className={categories[category].iconclass + ` imgIcon`}

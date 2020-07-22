@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getVasooliByFilter } from "./../firebase/vasooli";
 import fire from "./../firebase/fire";
 import Vasoolicard from "./../components/vasooli/vasoolicard";
@@ -10,7 +10,7 @@ export default function VasooliV() {
   const [VasooliArr, setVasooliArr] = useState([]);
   const [loading, setloading] = useState(true);
   const [user, setuser] = useState({});
-
+  let loc = useLocation();
   const getDataFromFB = () => {
     let email = user.email;
     setloading(true);
@@ -51,7 +51,7 @@ export default function VasooliV() {
         console.log("NO user AUth Change");
       }
     });
-  }, []);
+  }, [loc.pathname]);
   return (
     <Fragment>
       <div className='row' style={{ marginBottom: "7px" }}>

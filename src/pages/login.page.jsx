@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { FBlogin } from "./../firebase/user";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 export default function LoginV() {
   const [user, setuser] = useState({
     email: "",
@@ -9,6 +9,7 @@ export default function LoginV() {
   const [success, setsuccess] = useState(false);
   const [error, seterror] = useState(false);
   const [errorBody, seterrorBody] = useState({});
+  let loc = useLocation();
   const handleChange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
     //console.log(user);
@@ -59,6 +60,10 @@ export default function LoginV() {
       }, 3000);
     }
   }, [success]);
+
+  useEffect(() => {
+    
+  }, [loc.pathname]);
 
   return (
     <Fragment>
