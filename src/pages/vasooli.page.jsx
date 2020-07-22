@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { getVasooliByFilter } from "./../firebase/vasooli";
 import fire from "./../firebase/fire";
 import Vasoolicard from "./../components/vasooli/vasoolicard";
+import Empty from "./../components/general/empty.component";
 export default function VasooliV() {
   const [filter, setfilter] = useState("ALL");
   const [SendToCardFilter, setSendToCardFilter] = useState("ALL");
@@ -76,9 +77,13 @@ export default function VasooliV() {
         </div>
       </div>
       {!loading ? (
-        VasooliArr.map((single, index) => (
-          <Vasoolicard key={index} data={single} filter={SendToCardFilter} />
-        ))
+        VasooliArr.length > 0 ? (
+          VasooliArr.map((single, index) => (
+            <Vasoolicard key={index} data={single} filter={SendToCardFilter} />
+          ))
+        ) : (
+          <Empty />
+        )
       ) : (
         <div className='w-100 d-flex justify-content-center'>
           <Spinner

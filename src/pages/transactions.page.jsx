@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Transactioncard from "./../components/transactions/transactioncard";
 import { getTransactionByFilter } from "./../firebase/transaction";
 import Spinner from "react-bootstrap/Spinner";
+import Empty from "./../components/general/empty.component";
 
 import { getCurrentUser } from "./../firebase/user";
 import fire from "./../firebase/fire";
@@ -87,9 +88,13 @@ export default function TransactionsV() {
         </div>
       </div>
       {!loading ? (
-        TransactionsArr.map((trans, index) => (
-          <Transactioncard key={index} trans={trans} />
-        ))
+        TransactionsArr.length > 0 ? (
+          TransactionsArr.map((trans, index) => (
+            <Transactioncard key={index} trans={trans} />
+          ))
+        ) : (
+          <Empty />
+        )
       ) : (
         <div className='w-100 d-flex justify-content-center'>
           <Spinner
