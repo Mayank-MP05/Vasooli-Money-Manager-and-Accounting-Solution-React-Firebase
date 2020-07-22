@@ -36,6 +36,8 @@ const App = () => {
   const [dock, setdock] = useState(mql.matches);
   const [Sidebaropen, setSidebaropen] = useState(false);
   const [user, setuser] = useState({});
+  const [Balance, setBalance] = useState(0);
+
   const [loggedin, setloggedin] = useState(false);
 
   const onSetSidebarOpen = (open) => {
@@ -63,10 +65,19 @@ const App = () => {
         setuser(user);
         setloggedin(true);
         //        console.log(user);
+        //Checkins for Balance Realtime
+        fire
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .onSnapshot((snap) => {
+            setBalance(snap.data().balance);
+          });
       } else {
         console.log("NO user AUth Change");
       }
     });
+
     //Firebase User Checkin
 
     return () => {
@@ -94,7 +105,7 @@ const App = () => {
         docked={dock}
         touch={true}
         onSetOpen={onSetSidebarOpen}>
-        <NavbarV onSetSidebarOpen={onSetSidebarOpen} />
+        <NavbarV onSetSidebarOpen={onSetSidebarOpen} balance={Balance} />
         {/*<button className='btn btn-info' onClick={show}>
           Show
   </button>*/}
