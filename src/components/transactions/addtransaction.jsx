@@ -94,6 +94,8 @@ export default function Addtransaction() {
               type='number'
               className='form-control'
               placeholder='ex. 50'
+              min='1'
+              max='100000'
               name='amount'
               value={trans.amount}
               onChange={handleChange}

@@ -116,6 +116,8 @@ export default function Addvasooli() {
               type='number'
               className='form-control'
               placeholder='ex. 50'
+              min='1'
+              max='100000'
               name='amount'
               value={vasooli.amount}
               onChange={handleChange}
