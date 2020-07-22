@@ -4,7 +4,10 @@ import { imgArr } from "./../../data/userimages";
 import { FBlogout } from "./../../firebase/user";
 import { Button } from "react-bootstrap";
 import "./sidebar.style.css";
-
+const IconStyling = {
+  fontSize: "25px",
+  margin: "0 5px",
+};
 export default function SidebarV({ control, cleanuser, user, loggedin }) {
   const logout = () => {
     FBlogout(
@@ -60,30 +63,35 @@ export default function SidebarV({ control, cleanuser, user, loggedin }) {
               to='/dashboard'
               className='list-group-item'
               onClick={() => control(false)}>
+              <i className='fa fa-area-chart' style={IconStyling}></i>
               Dashboard
             </Link>
             <Link
               to='/transactions'
               className='list-group-item'
               onClick={() => control(false)}>
+              <i className='fa fa-exchange' style={IconStyling}></i>
               Transactions
             </Link>
             <Link
               to='/vasooli'
               className='list-group-item'
               onClick={() => control(false)}>
+              <i className='fa fa-handshake-o' style={IconStyling}></i>
               Vasooli
             </Link>
             <Link
               to='/profile'
               className='list-group-item'
               onClick={() => control(false)}>
+              <i className='fa fa-user' style={IconStyling}></i>
               Profile
             </Link>
             <Link
               to='/notif'
               className='list-group-item'
               onClick={() => control(false)}>
+              <i className='fa fa-bell' style={IconStyling}></i>
               Notifications
             </Link>
           </ul>
