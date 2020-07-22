@@ -3,7 +3,7 @@ import categories from "./../../data/categories";
 import "./../transactions/transactioncard.style.css";
 import { updateVasooliStatus } from "./../../firebase/vasooli";
 export default function Vasoolicard({
-  data: { to, amount, category, date, desc, status, id },
+  data: { from, to, amount, category, date, desc, status, id },
   filter,
 }) {
   const [UIControls, setUIControls] = useState({
@@ -86,14 +86,19 @@ export default function Vasoolicard({
         </div>
         <div className='col-10 justify-content-start text-left'>
           <h6 className='card-title m-0'>
-            <div className='badge badge-success p-1 m-0'>
-              User{": "}
+            <div className='badge badge-danger p-1 m-0'>
+              To{": "}
               {to}
+            </div>
+            {"           "}
+            <div className='badge badge-success p-1 m-0'>
+              From{": "}
+              {from}
             </div>
             <br />
             Category{" "}
             <i
-              className={categories[category].iconclass + ` imgIcon`}
+              className={categories[category].iconclass + ` imgIcon d-none`}
               aria-hidden='true'
               style={{ fontSize: "18px" }}></i>{" "}
             : {categories[category].title}
