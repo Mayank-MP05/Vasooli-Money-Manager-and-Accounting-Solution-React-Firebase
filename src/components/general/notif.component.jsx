@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-export default function Notif({ data: { content, type } }) {
+export default function Notif({ data: { content, type, timestamp } }) {
   const [classNameX, setclassNameX] = useState("");
   const [icon, seticon] = useState("fa fa-info-circle");
   useEffect(() => {
@@ -18,6 +18,12 @@ export default function Notif({ data: { content, type } }) {
         {" : "}
       </b>
       {content}
+      <br />
+      {timestamp ? (
+        <small className='pull-right'>{timestamp.toLocaleTimeString()}</small>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
