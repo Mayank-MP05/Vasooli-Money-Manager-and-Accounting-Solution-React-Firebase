@@ -55,7 +55,7 @@ export default function SignupV() {
       seterror(true);
     } else {
       FBsignup(
-        { email: user.email, password: user.pass1 },
+        { email: user.email, password: user.pass1, fullName: user.fullName },
         (user) => {
           setsuccess(true);
           console.log(user);

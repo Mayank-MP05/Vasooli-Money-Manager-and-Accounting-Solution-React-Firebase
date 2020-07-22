@@ -24,7 +24,7 @@ export const FBlogout = (successFn, errorFn) => {
 };
 
 //Function to Create New User
-export const FBsignup = ({ email, password }, successFn, errorFn) => {
+export const FBsignup = ({ email, password, fullName }, successFn, errorFn) => {
   //Random Number Gen Logic between 1 to 9 for DP
   let randomProfile = Math.floor(Math.random() * 9);
   const db = fire.firestore();
@@ -49,7 +49,7 @@ export const FBsignup = ({ email, password }, successFn, errorFn) => {
       db.collection("users")
         .doc(user.uid)
         .set({
-          fullName: "",
+          fullName,
           address: "",
           balance: 0,
           email: user.email,
