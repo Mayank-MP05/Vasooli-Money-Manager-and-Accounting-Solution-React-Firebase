@@ -20,7 +20,9 @@ export default function Notif({ data: { content, type, timestamp } }) {
       {content}
       <br />
       {timestamp ? (
-        <small className='pull-right'>{timestamp.toLocaleTimeString()}</small>
+        <small className='pull-right'>
+          {timestamp.toDate().toLocaleDateString()}
+        </small>
       ) : (
         ""
       )}
