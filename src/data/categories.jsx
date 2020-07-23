@@ -15,13 +15,6 @@ export const Yellow = {
 
 const categories = [
   {
-    iconclass: "fa fa-credit-card",
-    title: "Bills",
-    description:
-      "Includes electricity bill, water bill, Gas bill and all other monthly bills ",
-    style: Blue,
-  },
-  {
     iconclass: "fa fa-money",
     title: "Salary",
     description: "Includes Official Salary Given by the Day Job you used to do",
@@ -32,6 +25,19 @@ const categories = [
     title: "Bonus",
     description:
       "Any type of bonus at your day job Increment or any hike in your Paycheque",
+    style: Blue,
+  },
+  {
+    iconclass: "fa fa-inr",
+    title: "Investment Returns",
+    description: "Any type of Returns from the Stocks or Mutual Funds",
+    style: Yellow,
+  },
+  {
+    iconclass: "fa fa-credit-card",
+    title: "Bills",
+    description:
+      "Includes electricity bill, water bill, Gas bill and all other monthly bills ",
     style: Blue,
   },
   {
