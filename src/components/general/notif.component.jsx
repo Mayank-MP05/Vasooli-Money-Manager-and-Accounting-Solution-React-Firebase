@@ -18,7 +18,7 @@ export default function Notif({ data: { content, type, timestamp } }) {
         {" : "}
       </b>
       {content}
-      <br />
+
       {timestamp ? (
         <small className='pull-right'>
           {timestamp.toDate().toLocaleDateString()}
