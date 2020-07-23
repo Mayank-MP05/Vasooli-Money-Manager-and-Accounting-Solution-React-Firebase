@@ -71,7 +71,7 @@ const App = () => {
           .collection("users")
           .doc(user.uid)
           .onSnapshot((snap) => {
-            setBalance(snap.data().balance);
+            if (snap.data()) setBalance(snap.data().balance);
           });
       } else {
         console.log("NO user AUth Change");
@@ -111,27 +111,48 @@ const App = () => {
   </button>*/}
         <div className='container p-3' style={{ marginBottom: "80px" }}>
           <Switch>
-            <Route path='/dashboard'>
-              <DashboardV />
-            </Route>
-            <Route path='/addtransaction' component={Addtransaction} />
-            <Route path='/login' component={LoginV} />
-            <Route path='/signup' component={SignupV} />
-            <Route path='/addvasooli' component={Addvasooli} />
-            <Route path='/notif' component={Notifpage} />
-            <Route path='/transactions'>
-              <TransactionsV user={user} loggedin={loggedin} />
-            </Route>
-            <Route path='/vasooli'>
-              <VasooliV />
-            </Route>
-            <Route path='/profile'>
-              <ProfileV />
-            </Route>
-            <Redirect from='/' to='/dashboard' />
-            <Route path='/'>
-              <DashboardV />
-            </Route>
+            {loggedin ? (
+              <Fragment>
+                <Route path='/dashboard' component={DashboardV} />
+
+                <Route path='/addtransaction' component={Addtransaction} />
+                <Route path='/addvasooli' component={Addvasooli} />
+                <Route path='/notif' component={Notifpage} />
+                <Route path='/transactions'>
+                  <TransactionsV user={user} loggedin={loggedin} />
+                </Route>
+                <Route path='/vasooli' component={VasooliV} />
+                <Route path='/profile' component={ProfileV} />
+                <Redirect from='/' to='/dashboard' />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Route path='/dashboard'>
+                  <Redirect from='/profile' to='/login' />
+                </Route>
+                <Route path='/addtransaction'>
+                  <Redirect from='/addtransaction' to='/login' />
+                </Route>
+                <Route path='/addvasooli'>
+                  <Redirect from='/addvasooli' to='/login' />
+                </Route>
+                <Route path='/vasooli'>
+                  <Redirect from='/vasooli' to='/login' />
+                </Route>
+                <Route path='/transactions'>
+                  <Redirect from='/transactions' to='/login' />
+                </Route>
+                <Route path='/notif'>
+                  <Redirect from='/notif' to='/login' />
+                </Route>
+                <Route path='/profile'>
+                  <Redirect from='/profile' to='/login' />
+                </Route>
+                <Route path='/login' component={LoginV} />
+                <Route path='/signup' component={SignupV} />
+                <Redirect from='/' to='/login' />
+              </Fragment>
+            )}
           </Switch>
         </div>
 
