@@ -114,9 +114,8 @@ export const getCurrentUser = () => {
 
 //Get all the Users List
 export const getUserList = (successFn, errorFn) => {
-  //TODO: Setting up cloud function
   axios
-    .get("https://us-central1-prebasooli.cloudfunctions.net/app")
+    .get("https://us-central1-vasoolimoney.cloudfunctions.net/listUsers")
     .then((res) => {
       console.log(res);
       successFn(res);
