@@ -72,7 +72,7 @@ export default function ProfileV() {
           (err) => seterror(err)
         );
       } else {
-        console.log("No Auth Changed");
+        //console.log("No Auth Changed");
       }
     });
   }, []);

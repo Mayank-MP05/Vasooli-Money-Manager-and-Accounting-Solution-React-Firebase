@@ -17,18 +17,15 @@ export default function Notifpage() {
         getNotif(
           user.email,
           (res) => {
-            console.log(res);
+            //console.log(res);
             setNotifArr(res);
           },
           (err) => console.log(err)
         );
       } else {
-        console.log("NO user AUth Change");
+        //console.log("NO user AUth Change");
       }
     });
-    return () => {
-      console.log("unmounted profile");
-    };
   }, [loc.pathname]);
 
   return (

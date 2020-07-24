@@ -27,7 +27,7 @@ export default function SidebarV({ control, cleanuser, user, loggedin }) {
       className='card'
       style={{ width: "250px", background: "white", height: "100vh" }}>
       <div className='card-body'>
-        {loggedin ? (
+        {loggedin && user.photoURL ? (
           <Fragment>
             <img
               className='card-img-top'

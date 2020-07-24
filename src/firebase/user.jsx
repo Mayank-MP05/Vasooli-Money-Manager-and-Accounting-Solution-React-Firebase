@@ -24,9 +24,12 @@ export const FBlogout = (successFn, errorFn) => {
 };
 
 //Function to Create New User
-export const FBsignup = ({ email, password, fullName }, successFn, errorFn) => {
+export const FBsignup = (
+  { randomProfile, email, password, fullName },
+  successFn,
+  errorFn
+) => {
   //Random Number Gen Logic between 1 to 9 for DP
-  let randomProfile = Math.floor(Math.random() * 9);
   const db = fire.firestore();
   //Firebase Authentication Signup
   firebase
@@ -40,7 +43,7 @@ export const FBsignup = ({ email, password, fullName }, successFn, errorFn) => {
           photoURL: randomProfile.toString(),
         })
         .then(() => {
-          successFn(firebase.auth().currentUser);
+          successFn(firebase.auth().currentUser, randomProfile);
         })
         .catch(() => {
           console.log("Error Updating Profile Pic");
@@ -116,9 +119,9 @@ export const getCurrentUser = () => {
 export const getUserList = (successFn, errorFn) => {
   fetch("https://us-central1-vasoolimoney.cloudfunctions.net/app")
     .then((res) => res.json())
-    .then(res => {
-      console.log(res)
-      successFn(res)
+    .then((res) => {
+      console.log(res);
+      successFn(res);
     })
     .catch((err) => errorFn(err));
 };

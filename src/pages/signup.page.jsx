@@ -54,8 +54,14 @@ export default function SignupV() {
       });
       seterror(true);
     } else {
+      let dp = Math.floor(Math.random() * 9);
       FBsignup(
-        { email: user.email, password: user.pass1, fullName: user.fullName },
+        {
+          randomProfile: dp,
+          email: user.email,
+          password: user.pass1,
+          fullName: user.fullName,
+        },
         (user) => {
           setsuccess(true);
           console.log(user);

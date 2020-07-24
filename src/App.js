@@ -111,48 +111,76 @@ const App = () => {
   </button>*/}
         <div className='container p-3' style={{ marginBottom: "80px" }}>
           <Switch>
-            {loggedin ? (
-              <Fragment>
+            <Route path='/dashboard'>
+              {loggedin ? (
                 <Route path='/dashboard' component={DashboardV} />
-
+              ) : (
+                <Redirect from='/dashboard' to='/login' />
+              )}
+            </Route>
+            <Route path='/addtransaction'>
+              {loggedin ? (
                 <Route path='/addtransaction' component={Addtransaction} />
+              ) : (
+                <Redirect from='/addtransaction' to='/login' />
+              )}
+            </Route>
+            <Route path='/addvasooli'>
+              {loggedin ? (
                 <Route path='/addvasooli' component={Addvasooli} />
+              ) : (
+                <Redirect from='/addvasooli' to='/login' />
+              )}
+            </Route>
+            <Route path='/notif'>
+              {loggedin ? (
                 <Route path='/notif' component={Notifpage} />
-                <Route path='/transactions'>
-                  <TransactionsV user={user} loggedin={loggedin} />
-                </Route>
+              ) : (
+                <Redirect from='/notif' to='/login' />
+              )}
+            </Route>
+            <Route path='/transactions'>
+              {loggedin ? (
+                <Route path='/transactions' component={TransactionsV} />
+              ) : (
+                <Redirect from='/transactions' to='/login' />
+              )}
+            </Route>
+            <Route path='/vasooli'>
+              {loggedin ? (
                 <Route path='/vasooli' component={VasooliV} />
+              ) : (
+                <Redirect from='/vasooli' to='/login' />
+              )}
+            </Route>
+            <Route path='/profile'>
+              {loggedin ? (
                 <Route path='/profile' component={ProfileV} />
-                <Redirect from='/' to='/dashboard' />
-              </Fragment>
-            ) : (
-              <Fragment>
-                <Route path='/dashboard'>
-                  <Redirect from='/profile' to='/login' />
-                </Route>
-                <Route path='/addtransaction'>
-                  <Redirect from='/addtransaction' to='/login' />
-                </Route>
-                <Route path='/addvasooli'>
-                  <Redirect from='/addvasooli' to='/login' />
-                </Route>
-                <Route path='/vasooli'>
-                  <Redirect from='/vasooli' to='/login' />
-                </Route>
-                <Route path='/transactions'>
-                  <Redirect from='/transactions' to='/login' />
-                </Route>
-                <Route path='/notif'>
-                  <Redirect from='/notif' to='/login' />
-                </Route>
-                <Route path='/profile'>
-                  <Redirect from='/profile' to='/login' />
-                </Route>
+              ) : (
+                <Redirect from='/profile' to='/login' />
+              )}
+            </Route>
+            <Route path='/login'>
+              {!loggedin ? (
                 <Route path='/login' component={LoginV} />
+              ) : (
+                <Redirect from='/login' to='/dashboard' />
+              )}
+            </Route>
+            <Route path='/signup'>
+              {!loggedin ? (
                 <Route path='/signup' component={SignupV} />
+              ) : (
+                <Redirect from='/signup' to='/dashboard' />
+              )}
+            </Route>
+            <Route path='/'>
+              {loggedin ? (
+                <Redirect from='/' to='/dashboard' />
+              ) : (
                 <Redirect from='/' to='/login' />
-              </Fragment>
-            )}
+              )}
+            </Route>
           </Switch>
         </div>
 

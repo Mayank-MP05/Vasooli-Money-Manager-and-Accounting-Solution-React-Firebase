@@ -85,7 +85,7 @@ export default function DashboardV() {
           (err) => console.log(err)
         );
       } else {
-        console.log("NO user AUth Change");
+        //console.log("NO user AUth Change");
       }
     });
   }, [loc.pathname]);
