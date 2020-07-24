@@ -9,10 +9,8 @@ export default function Notifpage() {
   const [user, setuser] = useState({});
 
   useEffect(() => {
-    console.log("mounted profile");
     fire.auth().onAuthStateChanged(function (user) {
       if (user) {
-        console.log("AUTH CHanged");
         setuser(user);
         getNotif(
           user.email,

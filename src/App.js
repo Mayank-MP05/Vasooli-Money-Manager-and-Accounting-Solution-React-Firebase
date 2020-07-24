@@ -37,7 +37,7 @@ const App = () => {
   const [Sidebaropen, setSidebaropen] = useState(false);
   const [user, setuser] = useState({});
   const [Balance, setBalance] = useState(0);
-
+  const [dp, setdp] = useState(0);
   const [loggedin, setloggedin] = useState(false);
 
   const onSetSidebarOpen = (open) => {
@@ -63,6 +63,7 @@ const App = () => {
     fire.auth().onAuthStateChanged(function (user) {
       if (user) {
         setuser(user);
+        setdp(parseInt(user.photoURL));
         setloggedin(true);
         //        console.log(user);
         //Checkins for Balance Realtime
@@ -74,7 +75,7 @@ const App = () => {
             if (snap.data()) setBalance(snap.data().balance);
           });
       } else {
-        console.log("NO user AUth Change");
+        //console.log("NO user AUth Change");
       }
     });
 
@@ -97,6 +98,7 @@ const App = () => {
           <SidebarV
             control={onSetSidebarOpen}
             user={user}
+            dp={dp}
             cleanuser={cleanuser}
             loggedin={loggedin}
           />
@@ -169,7 +171,7 @@ const App = () => {
             </Route>
             <Route path='/signup'>
               {!loggedin ? (
-                <Route path='/signup' component={SignupV} />
+                <SignupV setdp={setdp} />
               ) : (
                 <Redirect from='/signup' to='/dashboard' />
               )}

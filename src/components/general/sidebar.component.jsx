@@ -8,7 +8,7 @@ const IconStyling = {
   fontSize: "25px",
   margin: "0 5px",
 };
-export default function SidebarV({ control, cleanuser, user, loggedin }) {
+export default function SidebarV({ control, cleanuser, user, loggedin, dp }) {
   const logout = () => {
     FBlogout(
       () => {
@@ -27,11 +27,11 @@ export default function SidebarV({ control, cleanuser, user, loggedin }) {
       className='card'
       style={{ width: "250px", background: "white", height: "100vh" }}>
       <div className='card-body'>
-        {loggedin && user.photoURL ? (
+        {loggedin ? (
           <Fragment>
             <img
               className='card-img-top'
-              src={imgArr[parseInt(user.photoURL)]}
+              src={imgArr[parseInt(dp)]}
               alt='Card image cap'
               id={user.uid}
               style={{

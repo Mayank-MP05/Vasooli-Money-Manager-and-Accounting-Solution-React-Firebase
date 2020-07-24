@@ -1,8 +1,9 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { FBsignup } from "./../firebase/user";
 import { Link } from "react-router-dom";
+import { Dropdown } from "react-bootstrap";
 
-export default function SignupV() {
+export default function SignupV({ setdp }) {
   const [user, setuser] = useState({
     email: "",
     fullName: "",
@@ -62,8 +63,9 @@ export default function SignupV() {
           password: user.pass1,
           fullName: user.fullName,
         },
-        (user) => {
+        (user, dp) => {
           setsuccess(true);
+          setdp(dp);
           console.log(user);
         },
         (err) => {
