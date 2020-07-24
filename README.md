@@ -57,10 +57,20 @@ https://github.com/Mayank-MP05/Vasooli-Express-Firebase-functions
 
 ## Screenshots:
 
-Dashboard Page
+### Empty Dashboard Page
+![](https://github.com/Mayank-MP05/Vasooli-Money-Manager-and-Accounting-Solution-React-Firebase/blob/master/ss/empty-dashboard.PNG?raw=true)
+### After Adding Data Transaction Page
+![](https://github.com/Mayank-MP05/Vasooli-Money-Manager-and-Accounting-Solution-React-Firebase/blob/master/ss/dashboard.PNG?raw=true)
 
-Transaction Page
+### Transactions Page 
+![](https://github.com/Mayank-MP05/Vasooli-Money-Manager-and-Accounting-Solution-React-Firebase/blob/master/ss/transactions.PNG?raw=true)
 
-Vasooli Page
+### Vasooli Page
+![](https://github.com/Mayank-MP05/Vasooli-Money-Manager-and-Accounting-Solution-React-Firebase/blob/master/ss/Vasooli.png?raw=true)
 
-Notifications
+### Profile Page 
+![](https://github.com/Mayank-MP05/Vasooli-Money-Manager-and-Accounting-Solution-React-Firebase/blob/master/ss/profile.PNG?raw=true)
+
+### Notifications
+
+![](https://github.com/Mayank-MP05/Vasooli-Money-Manager-and-Accounting-Solution-React-Firebase/blob/master/ss/Notifications.PNG?raw=true)
