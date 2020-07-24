@@ -48,10 +48,16 @@ export default function SidebarV({ control, cleanuser, user, loggedin, dp }) {
           </Fragment>
         ) : (
           <Fragment>
-            <Link to='/signup' className='btn btn-warning m-1'>
+            <Link
+              to='/signup'
+              onClick={() => control(false)}
+              className='btn btn-warning m-1'>
               Sign Up
             </Link>
-            <Link to='/login' className='btn btn-success m-1'>
+            <Link
+              to='/login'
+              onClick={() => control(false)}
+              className='btn btn-success m-1'>
               Log In
             </Link>
           </Fragment>
