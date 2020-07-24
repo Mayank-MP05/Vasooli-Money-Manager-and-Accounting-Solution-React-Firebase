@@ -54,6 +54,7 @@ const App = () => {
 
   const cleanuser = () => {
     setloggedin(false);
+    setBalance(0);
     setuser({});
   };
 
