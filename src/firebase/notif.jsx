@@ -3,7 +3,7 @@ import fire from "./fire";
 //Get All Notification for User
 export const getNotif = (email, successFn, errorFn) => {
   const db = fire.firestore();
-  console.log(email);
+  //console.log(email);
   db.collection("notif")
     .where("private", "==", true)
     .where("user", "==", email)

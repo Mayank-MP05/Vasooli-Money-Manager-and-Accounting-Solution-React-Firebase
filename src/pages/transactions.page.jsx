@@ -21,8 +21,8 @@ export default function TransactionsV() {
   let loc = useLocation();
 
   const getDataFromFB = () => {
-    console.log(filter);
-    console.log(TransactionsArr);
+    //    console.log(filter);
+    // console.log(TransactionsArr);
     let uid = user.uid;
     setloading(true);
     getTransactionByFilter(

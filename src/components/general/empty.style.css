@@ -1,0 +1,15 @@
+/* Desktop View*/
+@media (min-width: 600px) {
+  .main-div {
+    width: 60%;
+    height: 70vh;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+  .main-div {
+    width: 80%;
+    height: 70vh;
+  }
+}
