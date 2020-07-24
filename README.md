@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Vasooli the Smart Money Manager and Accounting App
 
-## Available Scripts
+App is LIVE at `https://vasoolimoney.web.app/`
 
-In the project directory, you can run:
+If you want to check cross functionality you can use test user
 
-### `npm start`
+```
+Email : testuser@email.com
+Password : testpass
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Reason behind this awkward hindi name is the character in the Hindi Film franchise "Golmaal", anyways this app has core features includes :
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Keeping Track of your Incomes
+- Keeping track of all expenses
+- Ask Money to Friends
+- Categorising the Expenses and Income
+- Visualize the Data
+- Categorical and Time wise classifications
+- Can Update User Details except Email
 
-### `npm test`
+## Technology Stack :
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+1. App is using `React` at its Core Framework
+2. Styling : `Bootstrap` is used
+3. Icons : `Font Awesome Free Tier`
+4. Chart Plotting : `Rechart - Charts for ReactJS`
+5. Database : `Firebase Firestore`
+6. Backend : `Node Express and FB functions`
+```
 
-### `npm run build`
+## Structure Explaination :
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I Tried to keep the App Structure very simple and scalable as at first I wanted to build the same backend with mongo Structure is very modular
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+There are 7 main pages
+And have related sub-component as per need for that pages
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Dashboard - Display Chart on basis of User spending by using `Recharts` I used simple charts like BarChart and Double Ring Pie Chart
 
-### `npm run eject`
+2. Transactions - This pages renders the transaction based on the filter passed passed by default it renders all the transactions, Ideally It is used to sort by passing `Income /Expense` filter.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Vasooli : this is the core Idea Behind building this whole system. Vasooli basically means you ask your money which is borrowed by others In this page you can ask any user for the money and specify the reason for that money
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Notifications : This page fetches all the notification realted to the User and General notification. This notifications usually involves new user joining notifications as well as payment approvals declined or paid status
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. Profile : On this page you can update your profile picture name and address I know this is out of scope of this project but I didn't removed it completely as its slighly relevent too
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+6. Login : Login in the User and forward to Dashboard
 
-## Learn More
+7. Signup : Create New User and Log that user into the system
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Backend of the Project Link :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+https://github.com/Mayank-MP05/Vasooli-Express-Firebase-functions
+```
 
-### Code Splitting
+## Screenshots:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Dashboard Page
 
-### Analyzing the Bundle Size
+Transaction Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Vasooli Page
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Notifications
