@@ -21,14 +21,12 @@ Reason behind this awkward hindi name is the character in the Hindi Film franchi
 
 ## Technology Stack :
 
-```
 1. App is using `React` at its Core Framework
 2. Styling : `Bootstrap` is used
 3. Icons : `Font Awesome Free Tier`
 4. Chart Plotting : `Rechart - Charts for ReactJS`
 5. Database : `Firebase Firestore`
 6. Backend : `Node Express and FB functions`
-```
 
 ## Structure Explaination :
 

@@ -33,26 +33,31 @@ export default function Addtransaction() {
 
   const onsubmit = () => {
     let user = fire.auth().currentUser;
-    addTrans(
-      user.uid,
-      trans,
-      (res) => {
-        console.log(res);
-        setsuccess(true);
-        settrans({
-          type: "",
-          amount: 0,
-          category: 0,
-          date: new Date(),
-          desc: "",
-        });
-      },
-      (err) => {
-        console.log(err);
-        seterrorBody(err);
-        seterror(true);
-      }
-    );
+    if (trans.amount <= 0) {
+      seterror(true);
+      seterrorBody({ message: "Amount Cannot be Negative or Zero" });
+    } else {
+      addTrans(
+        user.uid,
+        trans,
+        (res) => {
+          console.log(res);
+          setsuccess(true);
+          settrans({
+            type: "",
+            amount: 0,
+            category: 0,
+            date: new Date(),
+            desc: "",
+          });
+        },
+        (err) => {
+          console.log(err);
+          seterrorBody(err);
+          seterror(true);
+        }
+      );
+    }
   };
 
   //To Stop displaying the popup after 3 sec

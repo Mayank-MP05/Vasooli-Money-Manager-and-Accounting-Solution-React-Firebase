@@ -22,27 +22,35 @@ export default function Addvasooli() {
 
   const onsubmit = () => {
     let user = fire.auth().currentUser;
-    addVasooli(
-      user.email,
-      vasooli,
-      (res) => {
-        console.log(res);
-        setsuccess(true);
-        setvasooli({
-          to: "",
-          amount: 0,
-          category: 1,
-          date: new Date(),
-          desc: "",
-          status: "WAITING",
-        });
-      },
-      (err) => {
-        console.log(err);
-        seterrorBody(err);
-        seterror(true);
-      }
-    );
+    if (vasooli.amount <= 0) {
+      seterror(true);
+      seterrorBody({ message: "Amount Cannot be Negative or Zero" });
+    } else if (vasooli.to === "") {
+      seterror(true);
+      seterrorBody({ message: "You Need to Select the User to ASK money" });
+    } else {
+      addVasooli(
+        user.email,
+        vasooli,
+        (res) => {
+          console.log(res);
+          setsuccess(true);
+          setvasooli({
+            to: "",
+            amount: 0,
+            category: 1,
+            date: new Date(),
+            desc: "",
+            status: "WAITING",
+          });
+        },
+        (err) => {
+          console.log(err);
+          seterrorBody(err);
+          seterror(true);
+        }
+      );
+    }
   };
 
   const handleChange = (e) => {
