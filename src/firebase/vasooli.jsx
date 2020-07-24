@@ -56,7 +56,7 @@ export const getVasooliByFilter = (email, filter, successFn, errorFn) => {
             res2.forEach((item) => {
               if (item.exists) Arr.push(item.data());
             });
-            console.log(Arr);
+            //console.log(Arr);
             successFn(Arr);
           })
           .catch((err) => errorFn(err));
@@ -71,7 +71,7 @@ export const updateVasooliStatus = (id, { status }, successFn, errorFn) => {
     status,
   };
   const db = fire.firestore();
-  console.log(id);
+  //  console.log(id);
   db.collection("vasooli")
     .doc(id)
     .set(obj, {

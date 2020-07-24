@@ -42,7 +42,7 @@ export default function VasooliV() {
           user.email,
           "ALL",
           (res) => {
-            console.log(res);
+            //console.log(res);
             setVasooliArr(res);
             setloading(false);
           },

@@ -120,7 +120,7 @@ export const getUserList = (successFn, errorFn) => {
   fetch("https://us-central1-vasoolimoney.cloudfunctions.net/app")
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      //console.log(res);
       successFn(res);
     })
     .catch((err) => errorFn(err));

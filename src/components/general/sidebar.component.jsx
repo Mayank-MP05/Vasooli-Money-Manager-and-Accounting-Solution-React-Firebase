@@ -13,7 +13,7 @@ export default function SidebarV({ control, cleanuser, user, loggedin, dp }) {
     FBlogout(
       () => {
         //Sucess Function
-        console.log("Log Out Successful");
+        //console.log("Log Out Successful");
         cleanuser();
       },
       () => {

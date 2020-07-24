@@ -33,13 +33,13 @@ export default function LoginV() {
     FBlogin(
       { email: user.email, password: user.password },
       (user) => {
-        console.log("User Logged In");
+        //console.log("User Logged In");
         setsuccess(true);
       },
       (error) => {
         seterror(true);
         seterrorBody(error);
-        console.log(error);
+        //console.log(error);
       }
     );
   };
@@ -61,9 +61,7 @@ export default function LoginV() {
     }
   }, [success]);
 
-  useEffect(() => {
-    
-  }, [loc.pathname]);
+  useEffect(() => {}, [loc.pathname]);
 
   return (
     <Fragment>
