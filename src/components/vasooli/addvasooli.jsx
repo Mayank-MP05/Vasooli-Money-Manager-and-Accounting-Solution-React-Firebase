@@ -61,20 +61,6 @@ export default function Addvasooli() {
     </div>
   );
 
-  const listing = () => {
-    //Getting user list
-    getUserList(
-      (res) => {
-        setuserlist(res.data);
-      },
-      (err) => {
-        seterror(true);
-        seterrorBody(err);
-        console.log(err);
-      }
-    );
-  };
-
   const getuser = () => {
     let user = fire.auth().currentUser;
     setuser(user);
@@ -99,7 +85,24 @@ export default function Addvasooli() {
   }, [success]);
 
   useEffect(() => {
-    listing();
+    //console.log("useEffctc");
+    fire.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        setuser(user);
+        getUserList(
+          (res) => {
+            //console.log(res);
+            setuserlist(res.filter((it) => it !== user.email));
+          },
+          (err) => {
+            seterror(true);
+            seterrorBody(err);
+            console.log(err);
+          }
+        );
+      } else {
+      }
+    });
   }, []);
   return (
     <Fragment>
@@ -133,7 +136,7 @@ export default function Addvasooli() {
               value={vasooli.to}
               onChange={handleChange}>
               {userlist
-                .filter((itr) => itr !== user.email)
+                //.filter((itr) => itr !== user.email)
                 .map((usr, index) => (
                   <option key={index} value={usr}>
                     {usr}

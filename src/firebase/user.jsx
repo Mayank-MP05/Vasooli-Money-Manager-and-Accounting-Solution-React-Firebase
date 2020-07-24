@@ -114,11 +114,11 @@ export const getCurrentUser = () => {
 
 //Get all the Users List
 export const getUserList = (successFn, errorFn) => {
-  axios
-    .get("https://us-central1-vasoolimoney.cloudfunctions.net/listUsers")
-    .then((res) => {
-      console.log(res);
-      successFn(res);
+  fetch("https://us-central1-vasoolimoney.cloudfunctions.net/app")
+    .then((res) => res.json())
+    .then(res => {
+      console.log(res)
+      successFn(res)
     })
     .catch((err) => errorFn(err));
 };
