@@ -5,8 +5,8 @@ App is LIVE at `https://vasoolimoney.web.app/`
 If you want to check cross functionality you can use test user
 
 ```
-Email : testuser@email.com
-Password : testpass
+Email : demouser3@email.com
+Password : user3pass
 ```
 
 Reason behind this awkward hindi name is the character in the Hindi Film franchise "Golmaal", anyways this app has core features includes :
